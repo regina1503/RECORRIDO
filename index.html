@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Audio</title>
+  <!-- Agregar enlace a Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .audio-button {
+      background-color: #a10c0c; /* Color de fondo del botón */
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .audio-button:hover {
+      background-color: #820909; /* Color del botón al pasar el ratón */
+    }
+    .icon {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <audio id="myAudio" controls autoplay>
+      <source src="https://github.com/regina1503/RECORRIDO/blob/main/Taylor%20Swift%20-%20Style%20(Audio).mp3?raw=true" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    <button class="audio-button" onclick="toggleAudio()">
+      <i class="fas fa-play icon" id="play-icon"></i>Play
+    </button>
+  </div>
+
+  <script>
+    function toggleAudio() {
+      var audio = document.getElementById("myAudio");
+      var playIcon = document.getElementById("play-icon");
+      if (audio.paused) {
+        audio.play();
+        playIcon.classList.remove("fa-play");
+        playIcon.classList.add("fa-pause");
+      } else {
+        audio.pause();
+        playIcon.classList.remove("fa-pause");
+        playIcon.classList.add("fa-play");
+      }
+    }
+
+    window.onload = function() {
+      var audio = document.getElementById("myAudio");
+      audio.play().catch(function(error) {
+        console.log("Reproducción automática fallida, se requiere interacción del usuario:", error);
+      });
+    };
+  </script>
+</body>
+</html>
